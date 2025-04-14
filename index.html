@@ -70,7 +70,8 @@
       line-height: 1.5;
     }
     /* Carousel Controls */
-    .prev, .next {
+    .prev,
+    .next {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -88,7 +89,8 @@
     .next {
       right: 20px;
     }
-    .prev:hover, .next:hover {
+    .prev:hover,
+    .next:hover {
       background: rgba(0, 0, 0, 0.8);
     }
     /* Dots Navigation */
@@ -120,6 +122,12 @@
       flex-direction: column;
       gap: 40px;
     }
+    /* Make the whole article clickable */
+    .article-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
     .article {
       display: flex;
       align-items: center;
@@ -145,6 +153,10 @@
       font-size: 1.1em;
       line-height: 1.6;
     }
+    .articles > a:nth-child(even) .article {
+      flex-direction: row-reverse;
+    }
+
     /* Alternate layout: even articles get reversed */
     .article:nth-child(even) {
       flex-direction: row-reverse;
@@ -159,22 +171,114 @@
     }
     /* Responsive adjustments */
     @media (max-width: 768px) {
-      .slide img {
-        height: 300px;
-      }
-      .overlay h2 {
-        font-size: 1.6em;
-      }
-      .overlay p {
-        font-size: 1em;
-      }
-      .article {
-        flex-direction: column;
-      }
-      .article img, .article .text {
-        width: 100%;
-      }
-    }
+  /* Carousel Adjustments */
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto; 
+  }
+  .slides {
+    display: flex;
+    /* Ensure no extra spacing that can shift slides */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    transition: transform 0.5s ease-in-out; /* keep the transition from your main style */
+  }
+  .slide {
+    position: relative;
+    /* Each slide must exactly match carousel width, no extra margin/padding */
+    min-width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+  .slide img {
+    width: 100%;
+    height: 300px; /* Adjust for tablet-size screens */
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Overlay text sizing for smaller devices */
+  .overlay h2 {
+    font-size: 1.6em;
+  }
+  .overlay p {
+    font-size: 1em;
+  }
+
+  /* Articles: Force Vertical Stacking */
+  .article {
+    flex-direction: column;
+  }
+  .articles > a .article {
+    flex-direction: column !important;
+  }
+  .articles > a .article img,
+  .articles > a .article .text {
+    width: 100% !important;
+  }
+  .article img,
+  .article .text {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Carousel Adjustments for Very Small Screens */
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto; 
+  }
+  .slides {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .slide {
+    position: relative;
+    min-width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+  .slide img {
+    width: 100%;
+    height: 250px; /* Further reduced for small phones */
+    object-fit: cover;
+    display: block;
+  }
+  .overlay {
+    padding: 15px;
+  }
+  .overlay h2 {
+    font-size: 1.4em;
+  }
+  .overlay p {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  
+  /* Articles for Small Phones */
+  .articles {
+    padding: 0 10px;
+  }
+  .article {
+    padding: 15px;
+    gap: 15px;
+    flex-direction: column !important;
+  }
+  .article .text h2 {
+    font-size: 1.6em;
+  }
+  .article .text p {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -182,47 +286,68 @@
   <header>
     <h1>Fashion Forward</h1>
   </header>
+  
   <!-- Carousel -->
   <div class="carousel">
     <div class="slides">
       <!-- Slide 1: Modern Styles -->
       <div class="slide">
-        <img src="https://www.fashioncronical.com/wp-content/uploads/2024/04/The-Evolution-Of-Fashion-From-Vintage-To-Modern.webp" alt="Modern Styles">
+        <img
+          src="https://www.fashioncronical.com/wp-content/uploads/2024/04/The-Evolution-Of-Fashion-From-Vintage-To-Modern.webp"
+          alt="Modern Styles"
+        />
         <div class="overlay">
           <h2>Modern Styles</h2>
-          <p>Embrace sleek designs and clean lines.<br>
-          Bold colors and minimalist silhouettes<br>
-          define today’s modern aesthetic.</p>
+          <p>
+            Embrace sleek designs and clean lines.<br />
+            Bold colors and minimalist silhouettes<br />
+            define today’s modern aesthetic.
+          </p>
         </div>
       </div>
       <!-- Slide 2: Street Style -->
       <div class="slide">
-        <img src="https://media.cnn.com/api/v1/images/stellar/prod/230316161109-03-seoul-fashion-week-street-style.jpg?c=original" alt="Street Style">
+        <img
+          src="https://media.cnn.com/api/v1/images/stellar/prod/230316161109-03-seoul-fashion-week-street-style.jpg?c=original"
+          alt="Street Style"
+        />
         <div class="overlay">
           <h2>Street Style</h2>
-          <p>Experience the energy of urban fashion.<br>
-          Gritty, bold, and authentically unique.<br>
-          Redefining city life, one look at a time.</p>
+          <p>
+            Experience the energy of urban fashion.<br />
+            Gritty, bold, and authentically unique.<br />
+            Redefining city life, one look at a time.
+          </p>
         </div>
       </div>
       <!-- Slide 3: Eco Fashion -->
       <div class="slide">
-        <img src="https://sb.ecobnb.net/app/uploads/sites/3/2022/12/What-is-Eco-friendly-Fashion-and-Why-it-is-Important-1170x490.jpg" alt="Eco Fashion">
+        <img
+          src="https://sb.ecobnb.net/app/uploads/sites/3/2022/12/What-is-Eco-friendly-Fashion-and-Why-it-is-Important-1170x490.jpg"
+          alt="Eco Fashion"
+        />
         <div class="overlay">
           <h2>Eco Fashion</h2>
-          <p>Sustainable style that speaks volumes.<br>
-          Eco-conscious materials meet modern design.<br>
-          Fashion with a purpose, for a greener world.</p>
+          <p>
+            Sustainable style that speaks volumes.<br />
+            Eco-conscious materials meet modern design.<br />
+            Fashion with a purpose, for a greener world.
+          </p>
         </div>
       </div>
       <!-- Slide 4: Vintage Vibes -->
       <div class="slide">
-        <img src="https://static.fibre2fashion.com/articleresources/images/103/10241/1_files/image002.jpg?v=20241219T134711" alt="Vintage Vibes">
+        <img
+          src="https://static.fibre2fashion.com/articleresources/images/103/10241/1_files/image002.jpg?v=20241219T134711"
+          alt="Vintage Vibes"
+        />
         <div class="overlay">
           <h2>Vintage Vibes</h2>
-          <p>Step back into timeless elegance.<br>
-          Classic styles with a modern twist,<br>
-          celebrating heritage and old-world charm.</p>
+          <p>
+            Step back into timeless elegance.<br />
+            Classic styles with a modern twist,<br />
+            celebrating heritage and old-world charm.
+          </p>
         </div>
       </div>
     </div>
@@ -241,37 +366,77 @@
   <!-- Articles Section -->
   <div class="articles">
     <!-- Article 1: Modern Styles -->
-    <div class="article">
-      <img src="https://www.fashioncronical.com/wp-content/uploads/2024/04/The-Evolution-Of-Fashion-From-Vintage-To-Modern.webp" alt="Modern Styles">
-      <div class="text">
-        <h2>Modern Styles</h2>
-        <p>Modern fashion is all about innovation and clean silhouettes. With bold color palettes and sleek designs, modern styles break away from the traditional to create a dynamic, forward-thinking look. Embrace the evolution of style where function meets art.</p>
+    <!-- Adjust these href paths as needed, e.g., "./modern.html" if files are in the same folder -->
+    <a href="modern.html" class="article-link">
+      <div class="article">
+        <img
+          src="https://www.fashioncronical.com/wp-content/uploads/2024/04/The-Evolution-Of-Fashion-From-Vintage-To-Modern.webp"
+          alt="Modern Styles"
+        />
+        <div class="text">
+          <h2>Modern Styles</h2>
+          <p>
+            Modern fashion is all about innovation and clean silhouettes. 
+            With bold color palettes and sleek designs, modern styles break 
+            away from the traditional to create a dynamic, forward-thinking 
+            look. Embrace the evolution of style where function meets art.
+          </p>
+        </div>
       </div>
-    </div>
+    </a>
     <!-- Article 2: Street Style -->
-    <div class="article">
-      <img src="https://media.cnn.com/api/v1/images/stellar/prod/230316161109-03-seoul-fashion-week-street-style.jpg?c=original" alt="Street Style">
-      <div class="text">
-        <h2>Street Style</h2>
-        <p>The urban landscape is a canvas for bold self-expression. Street style blends eclectic elements with raw individuality, delivering looks that are both edgy and effortlessly cool. Find inspiration in the hustle and energy of the city streets.</p>
+    <a href="street.html" class="article-link">
+      <div class="article">
+        <img
+          src="https://media.cnn.com/api/v1/images/stellar/prod/230316161109-03-seoul-fashion-week-street-style.jpg?c=original"
+          alt="Street Style"
+        />
+        <div class="text">
+          <h2>Street Style</h2>
+          <p>
+            The urban landscape is a canvas for bold self-expression. Street style blends
+            eclectic elements with raw individuality, delivering looks that are both edgy 
+            and effortlessly cool. Find inspiration in the hustle and energy of the city streets.
+          </p>
+        </div>
       </div>
-    </div>
+    </a>
     <!-- Article 3: Eco Fashion -->
-    <div class="article">
-      <img src="https://sb.ecobnb.net/app/uploads/sites/3/2022/12/What-is-Eco-friendly-Fashion-and-Why-it-is-Important-1170x490.jpg" alt="Eco Fashion">
-      <div class="text">
-        <h2>Eco Fashion</h2>
-        <p>Eco fashion redefines the industry by merging sustainability with cutting-edge design. Discover collections that use ethically sourced materials and environmentally friendly processes, allowing you to look fabulous while caring for the planet. Wear your values with pride.</p>
+    <a href="eco.html" class="article-link">
+      <div class="article">
+        <img
+          src="https://sb.ecobnb.net/app/uploads/sites/3/2022/12/What-is-Eco-friendly-Fashion-and-Why-it-is-Important-1170x490.jpg"
+          alt="Eco Fashion"
+        />
+        <div class="text">
+          <h2>Eco Fashion</h2>
+          <p>
+            Eco fashion redefines the industry by merging sustainability with 
+            cutting-edge design. Discover collections that use ethically sourced 
+            materials and environmentally friendly processes, allowing you to look 
+            fabulous while caring for the planet. Wear your values with pride.
+          </p>
+        </div>
       </div>
-    </div>
+    </a>
     <!-- Article 4: Vintage Vibes -->
-    <div class="article">
-      <img src="https://static.fibre2fashion.com/articleresources/images/103/10241/1_files/image002.jpg?v=20241219T134711" alt="Vintage Vibes">
-      <div class="text">
-        <h2>Vintage Vibes</h2>
-        <p>Vintage fashion is a celebration of the past reimagined for today. With classic patterns, textures, and silhouettes making a comeback, this style invites you to relive the elegance and sophistication of bygone eras while adding a modern twist to timeless designs.</p>
+    <a href="vintage.html" class="article-link">
+      <div class="article">
+        <img
+          src="https://static.fibre2fashion.com/articleresources/images/103/10241/1_files/image002.jpg?v=20241219T134711"
+          alt="Vintage Vibes"
+        />
+        <div class="text">
+          <h2>Vintage Vibes</h2>
+          <p>
+            Vintage fashion is a celebration of the past reimagined for today. 
+            With classic patterns, textures, and silhouettes making a comeback, 
+            this style invites you to relive the elegance and sophistication of 
+            bygone eras while adding a modern twist to timeless designs.
+          </p>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
   
   <!-- Footer -->
@@ -322,6 +487,5 @@
     showSlide(slideIndex);
   </script>
   <script id="kunato_js-js" type="module" src="https://qx-cdn.sgp1.digitaloceanspaces.com/widget/jantaserishta/widget.js"></script>
-
 </body>
 </html>
