@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fashion Forward</title>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Header */
+    header {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    header h1 {
+      font-size: 2.5em;
+    }
+    /* Full-width Carousel */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      position: relative;
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+    .slide img {
+      width: 100%;
+      height: 500px; /* fixed height for desktop, can adjust in media query */
+      object-fit: cover;
+      display: block;
+    }
+    /* Overlay caption styling */
+    .overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 4px;
+      text-align: center;
+      color: #fff;
+    }
+    .overlay h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .overlay p {
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+    /* Carousel Controls */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    .prev {
+      left: 20px;
+    }
+    .next {
+      right: 20px;
+    }
+    .prev:hover, .next:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    /* Dots Navigation */
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+    .dot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+      background: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: #717171;
+    }
+    /* Articles Section with alternating layout */
+    .articles {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .article {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      gap: 20px;
+    }
+    .article img {
+      width: 45%;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+    .article .text {
+      width: 55%;
+    }
+    .article .text h2 {
+      margin-bottom: 10px;
+      font-size: 1.8em;
+    }
+    .article .text p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    /* Alternate layout: even articles get reversed */
+    .article:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .slide img {
+        height: 300px;
+      }
+      .overlay h2 {
+        font-size: 1.6em;
+      }
+      .overlay p {
+        font-size: 1em;
+      }
+      .article {
+        flex-direction: column;
+      }
+      .article img, .article .text {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Fashion Forward</h1>
+  </header>
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="slides">
+      <!-- Slide 1: Modern Styles -->
+      <div class="slide">
+        <img src="https://www.fashioncronical.com/wp-content/uploads/2024/04/The-Evolution-Of-Fashion-From-Vintage-To-Modern.webp" alt="Modern Styles">
+        <div class="overlay">
+          <h2>Modern Styles</h2>
+          <p>Embrace sleek designs and clean lines.<br>
+          Bold colors and minimalist silhouettes<br>
+          define today’s modern aesthetic.</p>
+        </div>
+      </div>
+      <!-- Slide 2: Street Style -->
+      <div class="slide">
+        <img src="https://media.cnn.com/api/v1/images/stellar/prod/230316161109-03-seoul-fashion-week-street-style.jpg?c=original" alt="Street Style">
+        <div class="overlay">
+          <h2>Street Style</h2>
+          <p>Experience the energy of urban fashion.<br>
+          Gritty, bold, and authentically unique.<br>
+          Redefining city life, one look at a time.</p>
+        </div>
+      </div>
+      <!-- Slide 3: Eco Fashion -->
+      <div class="slide">
+        <img src="https://sb.ecobnb.net/app/uploads/sites/3/2022/12/What-is-Eco-friendly-Fashion-and-Why-it-is-Important-1170x490.jpg" alt="Eco Fashion">
+        <div class="overlay">
+          <h2>Eco Fashion</h2>
+          <p>Sustainable style that speaks volumes.<br>
+          Eco-conscious materials meet modern design.<br>
+          Fashion with a purpose, for a greener world.</p>
+        </div>
+      </div>
+      <!-- Slide 4: Vintage Vibes -->
+      <div class="slide">
+        <img src="https://static.fibre2fashion.com/articleresources/images/103/10241/1_files/image002.jpg?v=20241219T134711" alt="Vintage Vibes">
+        <div class="overlay">
+          <h2>Vintage Vibes</h2>
+          <p>Step back into timeless elegance.<br>
+          Classic styles with a modern twist,<br>
+          celebrating heritage and old-world charm.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel controls -->
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    <!-- Dots navigation -->
+    <div class="dots">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
+  
+  <!-- Articles Section -->
+  <div class="articles">
+    <!-- Article 1: Modern Styles -->
+    <div class="article">
+      <img src="https://www.fashioncronical.com/wp-content/uploads/2024/04/The-Evolution-Of-Fashion-From-Vintage-To-Modern.webp" alt="Modern Styles">
+      <div class="text">
+        <h2>Modern Styles</h2>
+        <p>Modern fashion is all about innovation and clean silhouettes. With bold color palettes and sleek designs, modern styles break away from the traditional to create a dynamic, forward-thinking look. Embrace the evolution of style where function meets art.</p>
+      </div>
+    </div>
+    <!-- Article 2: Street Style -->
+    <div class="article">
+      <img src="https://media.cnn.com/api/v1/images/stellar/prod/230316161109-03-seoul-fashion-week-street-style.jpg?c=original" alt="Street Style">
+      <div class="text">
+        <h2>Street Style</h2>
+        <p>The urban landscape is a canvas for bold self-expression. Street style blends eclectic elements with raw individuality, delivering looks that are both edgy and effortlessly cool. Find inspiration in the hustle and energy of the city streets.</p>
+      </div>
+    </div>
+    <!-- Article 3: Eco Fashion -->
+    <div class="article">
+      <img src="https://sb.ecobnb.net/app/uploads/sites/3/2022/12/What-is-Eco-friendly-Fashion-and-Why-it-is-Important-1170x490.jpg" alt="Eco Fashion">
+      <div class="text">
+        <h2>Eco Fashion</h2>
+        <p>Eco fashion redefines the industry by merging sustainability with cutting-edge design. Discover collections that use ethically sourced materials and environmentally friendly processes, allowing you to look fabulous while caring for the planet. Wear your values with pride.</p>
+      </div>
+    </div>
+    <!-- Article 4: Vintage Vibes -->
+    <div class="article">
+      <img src="https://static.fibre2fashion.com/articleresources/images/103/10241/1_files/image002.jpg?v=20241219T134711" alt="Vintage Vibes">
+      <div class="text">
+        <h2>Vintage Vibes</h2>
+        <p>Vintage fashion is a celebration of the past reimagined for today. With classic patterns, textures, and silhouettes making a comeback, this style invites you to relive the elegance and sophistication of bygone eras while adding a modern twist to timeless designs.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Fashion Forward. All rights reserved.</p>
+  </footer>
+  
+  <!-- JavaScript for Carousel -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slides .slide");
+    const dots = document.querySelectorAll(".dot");
+    const totalSlides = slides.length;
+    
+    function showSlide(index) {
+      if (index >= totalSlides) {
+        slideIndex = 0;
+      } else if (index < 0) {
+        slideIndex = totalSlides - 1;
+      } else {
+        slideIndex = index;
+      }
+      const offset = -slideIndex * 100;
+      document.querySelector(".slides").style.transform = "translateX(" + offset + "%)";
+      updateDots();
+    }
+    
+    function updateDots() {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === slideIndex);
+      });
+    }
+    
+    function changeSlide(n) {
+      showSlide(slideIndex + n);
+    }
+    
+    function currentSlide(n) {
+      showSlide(n);
+    }
+    
+    // Auto-cycle the slides every 5 seconds.
+    setInterval(() => {
+      showSlide(slideIndex + 1);
+    }, 5000);
+    
+    // Initialize the carousel.
+    showSlide(slideIndex);
+  </script>
+  <script id="kunato_js-js" type="module" src="https://qx-cdn.sgp1.digitaloceanspaces.com/widget/jantaserishta/widget.js"></script>
+
+</body>
+</html>
